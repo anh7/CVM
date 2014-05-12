@@ -1,0 +1,46 @@
+﻿.group-detail-name {
+    /*font-weight: bold;
+    font-size: small;*/
+    width: 70px;
+    vertical-align: top;
+}
+.group-detail-icon{
+    width: 20px;
+    vertical-align: top;
+}
+.group-detail-value{
+    /*font-size: medium;*/
+    font-weight:bold;
+}
+.group-detail-value a{
+    color: #505050;
+}
+.editable-submit{
+    margin-right: 0 !important;
+}
+
+.editable-cancel{
+    margin-right: 0 !important;
+}
+.head-row{
+    margin: 10px 10px !important;
+}
+.no-margin-bottom{
+    margin-bottom: 0px;
+}
+.input-update-info{
+    width: 200px;
+}
+.Account-Name, .Contact-Name {
+    color: #444444 !important;
+}
+.expand-info{
+    display:none;
+}
+#ShowMore{
+    font-style:italic;
+}
+.column-text-main{
+    font-weight: bold !important;
+}
+.

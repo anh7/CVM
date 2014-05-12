@@ -1,0 +1,73 @@
+﻿@model CRM.Models.UserView
+
+@{
+    ViewBag.Title = "Create";
+    IEnumerable<CRM.Models.Role>  roles = ViewBag.RoleID;
+}
+
+
+
+<section class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Create User
+                </header>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form-horizontal bucket-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Full name</label>
+
+                            <div class="col-sm-3">
+                                @*<input type="text" class="form-control" placeholder="First name">*@
+
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "First name" })
+                                @Html.ValidationMessageFor(model => model.FirstName)
+                            </div>
+                            <div class="col-sm-3">
+                                @*<input type="text" class="form-control" placeholder="Last name">*@
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Last name" })
+                                @Html.ValidationMessageFor(model => model.LastName)
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+
+                            @Html.LabelFor(model => model.Email, new { @class = "col-sm-3 control-label" })
+                            <div class="col-sm-6">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "example@mail.com" })
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Add Role</label>
+                            <div class="col-lg-6">
+                                @Html.DropDownListFor(model => model.RoleID, new SelectList(roles, "ID", "Name"), new { @class = "form-control m-bot15" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess"></label>
+                            <div class="col-lg-6" align="right">
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Add New</button>
+                            </div>
+
+
+                        </div>
+                    }
+                </div>
+            </section>
+
+        </div>
+    </div>
+</section>
