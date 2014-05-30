@@ -25,8 +25,10 @@ namespace CRM.DataAccess
         public DbSet<Role> Roles { get; set; }
 
         public DbSet<User> Users { get; set; }
-       
+
+        public DbSet<CVInfo> CVInfoes { get; set; }
             }
+        
 
     public class CRMInitializer : CreateDatabaseIfNotExists<CRMContext>
     {
