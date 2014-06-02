@@ -214,5 +214,10 @@ namespace CRM.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        public ActionResult Profile(UserView user)
+        {
+            return View();
+        }
     }
 }
