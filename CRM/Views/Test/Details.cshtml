@@ -1,4 +1,4 @@
-﻿@model CRM.Model.User
+﻿@model CRM.Model.Address
 
 @{
     ViewBag.Title = "Details";
@@ -7,55 +7,31 @@
 <h2>Details</h2>
 
 <div>
-    <h4>User</h4>
+    <h4>Address</h4>
 	<hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.role.Name)
+            @Html.DisplayNameFor(model => model.Province.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.role.Name)
+            @Html.DisplayFor(model => model.Province.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.User.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.User.FirstName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Street)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
+            @Html.DisplayFor(model => model.Street)
         </dd>
 
     </dl>

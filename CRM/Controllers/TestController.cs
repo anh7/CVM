@@ -18,8 +18,8 @@ namespace CRM.Controllers
         // GET: /Test/
         public ActionResult Index()
         {
-            var users = db.Users.Include(u => u.role);
-            return View(users.ToList());
+            var address = db.Address.Include(a => a.Province).Include(a => a.User);
+            return View(address.ToList());
         }
 
         // GET: /Test/Details/5
@@ -29,18 +29,19 @@ namespace CRM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Address address = db.Address.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(address);
         }
 
         // GET: /Test/Create
         public ActionResult Create()
         {
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name");
+            ViewBag.ProvinceID = new SelectList(db.Province, "ID", "Name");
+            ViewBag.ID = new SelectList(db.User, "ID", "FirstName");
             return View();
         }
 
@@ -49,17 +50,18 @@ namespace CRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,FirstName,LastName,Email,Password,Status,RoleID")] User user)
+        public ActionResult Create([Bind(Include="ID,Street,ProvinceID")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                db.Address.Add(address);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name", user.RoleID);
-            return View(user);
+            ViewBag.ProvinceID = new SelectList(db.Province, "ID", "Name", address.ProvinceID);
+            ViewBag.ID = new SelectList(db.User, "ID", "FirstName", address.ID);
+            return View(address);
         }
 
         // GET: /Test/Edit/5
@@ -69,13 +71,14 @@ namespace CRM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Address address = db.Address.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name", user.RoleID);
-            return View(user);
+            ViewBag.ProvinceID = new SelectList(db.Province, "ID", "Name", address.ProvinceID);
+            ViewBag.ID = new SelectList(db.User, "ID", "FirstName", address.ID);
+            return View(address);
         }
 
         // POST: /Test/Edit/5
@@ -83,16 +86,17 @@ namespace CRM.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,FirstName,LastName,Email,Password,Status,RoleID")] User user)
+        public ActionResult Edit([Bind(Include="ID,Street,ProvinceID")] Address address)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(address).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name", user.RoleID);
-            return View(user);
+            ViewBag.ProvinceID = new SelectList(db.Province, "ID", "Name", address.ProvinceID);
+            ViewBag.ID = new SelectList(db.User, "ID", "FirstName", address.ID);
+            return View(address);
         }
 
         // GET: /Test/Delete/5
@@ -102,12 +106,12 @@ namespace CRM.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Address address = db.Address.Find(id);
+            if (address == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(address);
         }
 
         // POST: /Test/Delete/5
@@ -115,8 +119,8 @@ namespace CRM.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            Address address = db.Address.Find(id);
+            db.Address.Remove(address);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

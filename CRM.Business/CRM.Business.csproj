@@ -11,6 +11,10 @@
     <AssemblyName>CRM.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,10 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountBusiness.cs" />
+    <Compile Include="AddressBusiness.cs" />
+    <Compile Include="EducationBusiness.cs" />
+    <Compile Include="EducationLevelBusiness.cs" />
+    <Compile Include="InterestingBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceBusiness.cs" />
     <Compile Include="RoleBusiness.cs" />
     <Compile Include="UserBusiness.cs" />
+    <Compile Include="User_EducationBusiness.cs" />
+    <Compile Include="User_InterestingBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRM.Common\CRM.Common.csproj">

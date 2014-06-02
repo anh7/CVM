@@ -11,6 +11,7 @@ namespace CRM.Common
         IList<T> GetAll();
         T Get(int id);
         void Create(T t);
+        void Remove(T t);
         void Update(T t);
         int Save();
     }

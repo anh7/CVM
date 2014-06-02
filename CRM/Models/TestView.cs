@@ -6,11 +6,11 @@ using System.Web;
 
 namespace CRM.Models
 {
-    public class TestView
+    public class InterestingView
     {
-        [Display(Name = "Test Name")]
-        public String TestName { get; set; }
-        [Display(Name = "Des")]
-        public String Des { get; set; }
+        public String primary { get; set; }
+        public String secondary { get; set; }
+        public String image { get; set; }
+        public String onclick { get; set; }
     }
 }

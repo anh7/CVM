@@ -4,50 +4,175 @@
 }
 
 <section class="wrapper">
+
     <!-- page start-->
+    <section class="wrapper">
+        <!-- page start-->
+        <div class="row">
+            <div class="col-lg-12">
+                <!--breadcrumbs start -->
+                <ul class="breadcrumb col-lg-12">
+                    <li><a href="#"><i class="icon-home"></i> Home</a></li>
+                    <li><a href="#">Library</a></li>
+                    <li class="active">Data</li>
+                </ul>
+                <!--breadcrumbs end -->
+            </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <section class="panel">
-                <header class="panel-heading"> User List <span class="tools pull-right"> <a href="javascript:;" class="fa fa-chevron-down"></a> <a href="javascript:;" class="fa fa-cog"></a> <a href="javascript:;" class="fa fa-times"></a> </span> </header>
-                <div class="panel-body">
-                    <div class="adv-table">
-                        <table class="display table table-bordered table-striped" id="dynamic-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th class="hidden-phone">Date Created</th>
-                                    <th class="hidden-phone">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               @foreach (var item in Model)
-                               { 
-                                <tr class="gradeX">
-                                    <td>@Html.DisplayFor(modelitem => item.FirstName) @Html.DisplayFor(modelitem => item.LastName)</td> 
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        User List
+                    </header>
+                    <a class="btn btn-success" href="/User/Create" style="margin-left:10px;margin-top:10px;"><i class=" icon-plus" ></i>New User</a>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                            <table class="display table table-bordered table-striped" id="example">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Date Created</th>
+                                        <th class="hidden-phone">Status</th>
                                 
-                                    <td>@Html.DisplayFor(modelitem => item.Email)</td>
-                               
-                                 
-                                    <td>@Html.DisplayFor(modelitem => item.DateCreate)</td>
-                                    <td>@Html.DisplayFor(modelitem => item.role.Name)</td>
-                                   
-                                    <td class="center hidden-phone">@if (item.Status == true) { @Html.Raw("<button type='button' class='btn btn-primary'>Active</button>")}else{@Html.Raw("<button type='button' class='btn btn-danger'>Deactive</button>");}</td>
-                                </tr>
-                               }
-                              
+                                    </tr>
+                                </thead>
+                             
+
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="gradeA">
+                                            <td>@Html.DisplayFor(modelitem => item.FirstName) @Html.DisplayFor(modelitem => item.LastName)</td>
+
+                                            <td>@Html.DisplayFor(modelitem => item.Email)</td>
 
 
-                        </table>
+
+                                            <td>@Html.DisplayFor(modelitem => item.role.Name)</td>
+                                            <td>@Html.DisplayFor(modelitem => item.DateCreate)</td>
+
+                                            <td >
+                                              
+                                                    
+                                                        <input type="checkbox" value="@item.ID"  data-toggle="switch" @if(item.Status==true){@Html.Raw("checked=''")} class="active"/>
+                                                  
+                                                   
+                                               
+                                            </td>
+                                    </tr>
+                                    }
+
+
+
+
+                            </table>
+
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+              </div>
+          </div>
+
+        </section>
+ </section>
+<div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal Tittle</h4>
+            </div>
+            <div class="modal-body">
+
+                Do you want to deactive user <strong id="user-deactive"></strong>
+                <input type="hidden" name="id-user" />
+
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                <button class="btn btn-success confirm-de" type="button">Save changes</button>
+            </div>
         </div>
     </div>
+</div>
+ <!--script for this page only-->
 
-</section>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function () {
+        $('#example').dataTable({
+            "aaSorting": [[4, "desc"]]
+        });
+        $('.active').change(function () {
+            url = '/User/UpdateStatus';
+            if ($(this).is(':checked')) {
+              
+                $.post(url, { ID: $(this).val(), Status: "Ac" }, function (data) {
+                })
+            }
+            else
+            {
+                $.post(url, { ID: $(this).val(), Status: "De" }, function (data) {
+                })
+            }
+                
+        });
+        //$('.deactive-user').click(function () {
+
+        //    $('input[name=id-user]').attr('value', $(this).attr('data-user'));
+        //    $('#user-deactive').text($(this).parent().parent().children().first().text());
+        //});
+        //$('.confirm-de').click(function ()
+        //{
+        //    id = $('input[name=id-user]').val();
+        //    url = '/User/UpdateStatus';
+        //    $.post(url, { ID: id,Status:"De" }, function (data) {
+        //        $('a[data-user=' + id + ']').parent().html('<a  class="btn btn-danger confirm-action" data-deuser=' + id + '>Deactive</a>');
+                
+
+
+        //    });
+        //    $('#myModal').modal("hide");
+
+        //});
+        //$('.confirm-action').click(function () {
+        //    id = $(this).attr('data-deuser');
+       
+        //    url = '/User/UpdateStatus';
+        //    $.post(url, { ID: id,Status:"Ac" }, function () {
+        //        $('a[data-deuser=' + id + ']').parent().html("<a class='btn btn-info deactive-user' data-toggle='modal' href='#myModal' data-user="+id+">Active</a>");
+          
+       
+        //    });
+           
+
+        //});
+
+
+        
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
 
 

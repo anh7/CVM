@@ -39,6 +39,11 @@ namespace CRM.DataAccess
         {
             dbSet.Add(t);
         }
+        public void Remove(T t)
+        {
+            dbSet.Remove(t);
+            
+        }
 
         public void Update(T t)
         {

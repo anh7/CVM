@@ -14,6 +14,27 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRM.Business", "CRM.Business\CRM.Business.csproj", "{A88B0859-FDA8-444E-9F99-C7A78A6C1C39}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://anhtruong.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CRM.Business\\CRM.Business.csproj
+		SccProjectName1 = CRM.Business
+		SccLocalPath1 = CRM.Business
+		SccProjectUniqueName2 = CRM.Common\\CRM.Common.csproj
+		SccProjectName2 = CRM.Common
+		SccLocalPath2 = CRM.Common
+		SccProjectUniqueName3 = CRM.DataAccess\\CRM.DataAccess.csproj
+		SccProjectName3 = CRM.DataAccess
+		SccLocalPath3 = CRM.DataAccess
+		SccProjectUniqueName4 = CRM.Model\\CRM.Models.csproj
+		SccProjectName4 = CRM.Model
+		SccLocalPath4 = CRM.Model
+		SccProjectUniqueName5 = CRM\\CRM.Presentation.csproj
+		SccProjectName5 = CRM
+		SccLocalPath5 = CRM
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
